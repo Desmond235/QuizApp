@@ -29,7 +29,7 @@ class _QuizPageState extends State<QuizPage> {
     }
     return Scaffold(
       body: Container(
-        // padding: const EdgeInsets.all(10),
+         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
