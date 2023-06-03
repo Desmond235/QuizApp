@@ -12,10 +12,9 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-
   var currentQuestionIndex = 0;
 
-  void answerQuestion(){
+  void answerQuestion() async{
     setState(() {
        currentQuestionIndex++;
     });
@@ -32,7 +31,7 @@ class _QuizScreenState extends State<QuizScreen> {
           children: [
              Text(
               currentQuestion.text,
-              style: GoogleFonts.sanchez(
+              style: GoogleFonts.lato(
                 color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.bold
@@ -49,7 +48,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     answerText: answer,
                     onTap: answerQuestion,
                   ),
-                  const SizedBox(height: 10)
+                  const SizedBox(height: 15)
                 ],
               );
             }),

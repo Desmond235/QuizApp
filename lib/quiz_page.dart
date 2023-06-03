@@ -12,9 +12,18 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   var activeScreen = 'start-screen';
+  bool isLoading = false;
 
   // ignore: unused_element
-  void switchScreen() {
+  void switchScreen() async {
+    setState((){
+      isLoading = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 3));
+    setState((){
+      isLoading = false;
+    });
     setState(() {
       activeScreen = 'quiz-screen';
     });
@@ -22,7 +31,7 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget screen = StartScreen(switchScreen);
+    Widget screen = StartScreen(switchScreen, isLoading);
 
     if(activeScreen == 'quiz-screen'){
       screen = const QuizScreen();
