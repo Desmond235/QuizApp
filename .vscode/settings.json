@@ -1,6 +1,7 @@
 {
     "workbench.colorCustomizations": {
         "badge.background": "#ff0000",
+        "badge.foreground": "#ffff",
         "minimap.background": "#00000000",
         "scrollbar.shadow": "#00000000"
     }
