@@ -14,8 +14,8 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   var currentQuestionIndex = 0;
 
-  void answerQuestion(String selectedAnswer) async{
-    widget.onSelectAnswer;
+  void answerQuestion(String selectedAnswer){
+    widget.onSelectAnswer(selectedAnswer);
     setState(() {
        currentQuestionIndex++;
     });
