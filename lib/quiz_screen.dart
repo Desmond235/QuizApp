@@ -29,6 +29,7 @@ class _QuizScreenState extends State<QuizScreen> {
         padding: const EdgeInsets.all(40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
              Text(
               currentQuestion.text,
