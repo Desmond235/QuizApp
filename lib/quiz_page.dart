@@ -54,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
       );
     }
     if (activeScreen == 'result-screen') {
-      screen = const ResultScreen();
+      screen = ResultScreen(chosenAnswers:  selectedAnswer);
     }
     return Scaffold(
       body: Container(
