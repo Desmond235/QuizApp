@@ -53,7 +53,7 @@ class _QuizPageState extends State<QuizPage> {
       );
     }
     if (activeScreen == 'result-screen') {
-      screen = ResultScreen(chosenAnswers:  selectedAnswer);
+      screen = ResultScreen(chosenAnswers:  selectedAnswer,);
     }
     return Scaffold(
       body: Container(
@@ -61,7 +61,6 @@ class _QuizPageState extends State<QuizPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
             colors: [
               Color.fromARGB(255, 78, 13, 151),
               Color.fromARGB(255, 107, 15, 141)
