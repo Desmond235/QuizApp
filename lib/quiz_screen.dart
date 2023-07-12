@@ -41,7 +41,8 @@ class _QuizScreenState extends State<QuizScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-      
+            
+              // data for the button
             ...currentQuestion.getShuffledListAnswers().map((answer) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
