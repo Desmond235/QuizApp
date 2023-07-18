@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
 class QuestionsData extends StatelessWidget {
-  const QuestionsData({super.key, required this.summaryData,required this.correctQuestion});
+  const QuestionsData({super.key, required this.summaryData,});
    
    final Color color = const Color.fromARGB(220, 255, 255, 255);
   final List<Map<String, Object>> summaryData;
-  final  bool correctQuestion;
+  
 
   Widget text(String text, Color color) {
     return Text(text,style: TextStyle(color: color,));
   }
 
- Widget corrextText(Widget child ) {
-    return SizedBox(child: child);
-  }
   @override
   Widget build(context) {
     return SizedBox(
@@ -24,16 +21,21 @@ class QuestionsData extends StatelessWidget {
             return Row(
               children: [
                    CircleAvatar(
+                    backgroundColor: data['user_answer'] == data['correct_answer'] 
+                    ? Colors.blue
+                    :Colors.red,
                     child: Text(((data['question_index']as int) + 1).toString(),
                      style:  TextStyle(
-                      color: color,
-                      backgroundColor:  correctQuestion ? Colors.blue : Colors.red
+                      color: color, 
                      ),
                     ) ,
                   ),
+                  const SizedBox(width:35),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const  SizedBox(height: 30),
                       text(data['question'].toString(),color),
                       const SizedBox(
                         height: 5,
