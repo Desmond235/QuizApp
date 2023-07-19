@@ -2,20 +2,33 @@ import 'package:flutter/material.dart';
 
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_data.dart';
+import 'package:quiz_app/quiz_screen.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends StatefulWidget {
   final List<String> chosenAnswers;
-  const ResultScreen({super.key, required this.chosenAnswers});
+  const ResultScreen({super.key, required this.chosenAnswers,required this.onSelectAnswer});
+  final void Function(String answer) onSelectAnswer;
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
+  void resetQuiz(){
+    setState(() {
+      QuizScreen(onSelectAnswer: widget.onSelectAnswer);
+    });
+  }
 
   List<Map<String, Object>> get getData {
     List<Map<String, Object>> data = [];
-    for (var i = 0; i < chosenAnswers.length; i++) {
+    for (var i = 0; i < widget.chosenAnswers.length; i++) {
       data.add(
         {
           'question_index': i,
           'question': questions[i].text,
           'correct_answer': questions[i].answer[0],
-          'user_answer': chosenAnswers[i]
+          'user_answer': widget.chosenAnswers[i]
         },
       );
     }
@@ -53,7 +66,7 @@ class ResultScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             TextButton.icon(
-              onPressed: () {},
+              onPressed: resetQuiz,
               label: const Text('Restart quiz'),
               icon: const Icon(Icons.restart_alt) ,
               style: TextButton.styleFrom(

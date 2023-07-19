@@ -48,12 +48,16 @@ class _QuizPageState extends State<QuizPage> {
     Widget screen = StartScreen(switchScreen, isLoading);
 
     if (activeScreen == 'quiz-screen') {
+      selectedAnswer=[];
       screen = QuizScreen(
         onSelectAnswer: chooseAnswer,
       );
     }
     if (activeScreen == 'result-screen') {
-      screen = ResultScreen(chosenAnswers:  selectedAnswer,);
+      screen = ResultScreen(
+        chosenAnswers: selectedAnswer,
+        onSelectAnswer: chooseAnswer,
+      );
     }
     return Scaffold(
       body: Container(
