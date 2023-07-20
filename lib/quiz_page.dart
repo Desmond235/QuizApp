@@ -40,7 +40,9 @@ class _QuizPageState extends State<QuizPage> {
       setState(() {
         activeScreen = 'result-screen';
       });
+  
     }
+    
   }
 
   @override
@@ -48,7 +50,6 @@ class _QuizPageState extends State<QuizPage> {
     Widget screen = StartScreen(switchScreen, isLoading);
 
     if (activeScreen == 'quiz-screen') {
-      selectedAnswer=[];
       screen = QuizScreen(
         onSelectAnswer: chooseAnswer,
       );
@@ -57,6 +58,7 @@ class _QuizPageState extends State<QuizPage> {
       screen = ResultScreen(
         chosenAnswers: selectedAnswer,
         onSelectAnswer: chooseAnswer,
+        resetQuiz: () => chooseAnswer,
       );
     }
     return Scaffold(
