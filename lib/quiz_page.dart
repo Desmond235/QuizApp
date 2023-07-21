@@ -32,6 +32,13 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  void resetQuiz() {
+    setState(() {
+      selectedAnswer = [];
+      activeScreen = 'quiz-screen';
+    });
+  }
+
 // function for selected answers
   void chooseAnswer(String answer) {
     selectedAnswer.add(answer);
@@ -40,9 +47,7 @@ class _QuizPageState extends State<QuizPage> {
       setState(() {
         activeScreen = 'result-screen';
       });
-  
     }
-    
   }
 
   @override
@@ -58,7 +63,7 @@ class _QuizPageState extends State<QuizPage> {
       screen = ResultScreen(
         chosenAnswers: selectedAnswer,
         onSelectAnswer: chooseAnswer,
-        resetQuiz: () => chooseAnswer,
+        onRestart: resetQuiz,
       );
     }
     return Scaffold(

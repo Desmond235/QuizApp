@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsData extends StatelessWidget {
   const QuestionsData({
@@ -9,8 +10,8 @@ class QuestionsData extends StatelessWidget {
   final Color color = const Color.fromARGB(220, 255, 255, 255);
   final List<Map<String, Object>> summaryData;
 
-  Widget text(String text, Color color, FontWeight fontWeight, double fontSize){
-    return Text(text, style: TextStyle(color: color, fontWeight: fontWeight, fontSize: fontSize));
+  Widget text(String text, Color color, FontWeight fontWeight, double fontSize,){
+    return Text(text, style: GoogleFonts.lato(color: color, fontWeight: fontWeight, fontSize: fontSize));
   }
 
   @override
@@ -22,44 +23,51 @@ class QuestionsData extends StatelessWidget {
           children: summaryData.map((data) {
             var dt = data['user_answer'] == data['correct_answer'];
           
-            return Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: dt
-                      ? Colors.blue.shade800
-                      : Colors.red.shade800,
-                  child: Text(
-                    ((data['question_index'] as int) + 1).toString(),
-                    style: TextStyle(
-                      color: color,
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 30,
+                    width: 30,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: dt ?const Color.fromARGB(255, 150, 198, 241) :const  Color.fromARGB(255, 249, 133, 241),
+                      borderRadius: BorderRadius.circular(80)
+                    ),
+                    child: Text(
+                      ((data['question_index'] as int) + 1).toString(),
+                      style: const  TextStyle(
+                        color: Color.fromARGB(255, 22, 2, 56),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 35),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 30),
-                      text(data['question'].toString(), color, FontWeight.bold,15),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      text(
-                        "Chosen Answer:\t\t ${data['user_answer'].toString()}",
-                        const Color.fromARGB(255, 247, 127, 167),
-                        FontWeight.normal,14
-                      ),
-                      const SizedBox(height: 5,),
-                      text(
-                        "Correct Answer: \t\t${data['correct_answer'].toString()}",
-                        const Color.fromARGB(255, 228, 134, 245),
-                        FontWeight.normal,14
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                  const SizedBox(width: 35),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        text(data['question'].toString(), color, FontWeight.bold,15),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        text(
+                          "Chosen Answer:\t\t ${data['user_answer'].toString()}",
+                          const Color.fromARGB(255, 255, 168, 249),
+                          FontWeight.normal,14
+                        ),
+                        const SizedBox(height: 5,),
+                        text(
+                          "Correct Answer: \t\t${data['correct_answer'].toString()}",
+                          const Color.fromARGB(255, 181, 254, 245),
+                          FontWeight.normal,14
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             );
           }).toList(),
         ),

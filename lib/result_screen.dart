@@ -2,31 +2,25 @@ import 'package:flutter/material.dart';
 
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
-class ResultScreen extends StatefulWidget {
+class ResultScreen extends StatelessWidget {
   final List<String> chosenAnswers;
   const ResultScreen(
-      {super.key, required this.chosenAnswers, required this.onSelectAnswer,required this.resetQuiz});
+      {super.key, required this.chosenAnswers, required this.onSelectAnswer,required this.onRestart});
   final void Function(String answer) onSelectAnswer;
-  final void Function() resetQuiz;
-
-  @override
-  State<ResultScreen> createState() => _ResultScreenState();
-}
-
-class _ResultScreenState extends State<ResultScreen> {
- 
+  final void Function() onRestart;
 
   List<Map<String, Object>> get getData {
     List<Map<String, Object>> data = [];
-    for (var i = 0; i < widget.chosenAnswers.length; i++) {
+    for (var i = 0; i < chosenAnswers.length; i++) {
       data.add(
         {
           'question_index': i,
           'question': questions[i].text,
           'correct_answer': questions[i].answer[0],
-          'user_answer': widget.chosenAnswers[i]
+          'user_answer': chosenAnswers[i]
         },
       );
     }
@@ -59,8 +53,8 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
             Text(
               ' you answered $numOfCorrectAnswers out $numOfQuestions questions correctly',
-              style: const TextStyle(
-                  color: Color.fromARGB(220, 255, 255, 255),
+              style: GoogleFonts.lato  (
+                  color: const  Color.fromARGB(255, 230, 200, 253),
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
@@ -70,7 +64,7 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
             const SizedBox(height: 30),
             TextButton.icon(
-                onPressed: widget.resetQuiz,
+                onPressed: onRestart,
                 label: const Text(
                   'Restart quiz',
                 style: TextStyle(fontSize: 15),
