@@ -10,8 +10,15 @@ class QuestionsData extends StatelessWidget {
   final Color color = const Color.fromARGB(220, 255, 255, 255);
   final List<Map<String, Object>> summaryData;
 
-  Widget text(String text, Color color, FontWeight fontWeight, double fontSize,){
-    return Text(text, style: GoogleFonts.lato(color: color, fontWeight: fontWeight, fontSize: fontSize));
+  Widget text(
+    String text,
+    Color color,
+    FontWeight fontWeight,
+    double fontSize,
+  ) {
+    return Text(text,
+        style: GoogleFonts.lato(
+            color: color, fontWeight: fontWeight, fontSize: fontSize));
   }
 
   @override
@@ -22,7 +29,7 @@ class QuestionsData extends StatelessWidget {
         child: Column(
           children: summaryData.map((data) {
             var dt = data['user_answer'] == data['correct_answer'];
-          
+
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Row(
@@ -33,12 +40,13 @@ class QuestionsData extends StatelessWidget {
                     width: 30,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: dt ?const Color.fromARGB(255, 150, 198, 241) :const  Color.fromARGB(255, 249, 133, 241),
-                      borderRadius: BorderRadius.circular(80)
-                    ),
+                        color: dt
+                            ? const Color.fromARGB(255, 150, 198, 241)
+                            : const Color.fromARGB(255, 249, 133, 241),
+                        borderRadius: BorderRadius.circular(80)),
                     child: Text(
                       ((data['question_index'] as int) + 1).toString(),
-                      style: const  TextStyle(
+                      style: const TextStyle(
                         color: Color.fromARGB(255, 22, 2, 56),
                       ),
                     ),
@@ -48,21 +56,24 @@ class QuestionsData extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        text(data['question'].toString(), color, FontWeight.bold,15),
+                        text(data['question'].toString(), color,
+                            FontWeight.bold, 15),
                         const SizedBox(
                           height: 5,
                         ),
                         text(
-                          "Chosen Answer:\t\t ${data['user_answer'].toString()}",
-                          const Color.fromARGB(255, 255, 168, 249),
-                          FontWeight.normal,14
+                            "Chosen Answer:\t\t ${data['user_answer'].toString()}",
+                            const Color.fromARGB(255, 255, 168, 249),
+                            FontWeight.normal,
+                            14),
+                        const SizedBox(
+                          height: 5,
                         ),
-                        const SizedBox(height: 5,),
                         text(
-                          "Correct Answer: \t\t${data['correct_answer'].toString()}",
-                          const Color.fromARGB(255, 181, 254, 245),
-                          FontWeight.normal,14
-                        ),
+                            "Correct Answer: \t\t${data['correct_answer'].toString()}",
+                            const Color.fromARGB(255, 181, 254, 245),
+                            FontWeight.normal,
+                            14),
                       ],
                     ),
                   )

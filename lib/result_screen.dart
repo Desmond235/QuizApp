@@ -4,11 +4,14 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_data.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class ResultScreen extends StatelessWidget {
   final List<String> chosenAnswers;
-  const ResultScreen(
-      {super.key, required this.chosenAnswers, required this.onSelectAnswer,required this.onRestart});
+  const ResultScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.onSelectAnswer,
+    required this.onRestart,
+  });
   final void Function(String answer) onSelectAnswer;
   final void Function() onRestart;
 
@@ -53,8 +56,8 @@ class ResultScreen extends StatelessWidget {
             ),
             Text(
               ' you answered $numOfCorrectAnswers out $numOfQuestions questions correctly',
-              style: GoogleFonts.lato  (
-                  color: const  Color.fromARGB(255, 230, 200, 253),
+              style: GoogleFonts.lato(
+                  color: const Color.fromARGB(255, 230, 200, 253),
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
@@ -67,7 +70,7 @@ class ResultScreen extends StatelessWidget {
                 onPressed: onRestart,
                 label: const Text(
                   'Restart quiz',
-                style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15),
                 ),
                 icon: const Icon(Icons.restart_alt),
                 style: TextButton.styleFrom(
